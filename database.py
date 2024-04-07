@@ -31,13 +31,26 @@ my_cursor = mydb.cursor()
 # mydb.commit()
 
 # Inser many records
-sqlStuff = "INSERT INTO users (name, email, age) VALUES (%s, %s, %s)"
-records = [
-    ("Tim", "tim@tim.com", 32),
-    ("Mary", "mary@mary.com", 22),
-    ("Steve", "steve@steveemail.com", 57),
-    ("Tina", "time@something.com", 29),
-]
+# sqlStuff = "INSERT INTO users (name, email, age) VALUES (%s, %s, %s)"
+# records = [
+#     ("Tim", "tim@tim.com", 32),
+#     ("Mary", "mary@mary.com", 22),
+#     ("Steve", "steve@steveemail.com", 57),
+#     ("Tina", "time@something.com", 29),
+# ]
 
-my_cursor.executemany(sqlStuff, records)
-mydb.commit()
+# my_cursor.executemany(sqlStuff, records)
+# mydb.commit()
+
+# my_cursor.execute("SELECT name FROM users")
+# my_cursor.execute("SELECT * FROM users")
+# result = my_cursor.fetchone()
+# result = my_cursor.fetchall()
+# for row in result:
+#     print(f"{row[0]}, {row[1]}, {row[2]}")
+
+my_cursor.execute("SELECT * FROM users WHERE age > 30")
+result = my_cursor.fetchall()
+
+for row in result:
+    print(row)
